@@ -1,0 +1,210 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DFF24EC6-A6F4-4AD4-8EB3-59298931B458}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App_Adopciones_Master</RootNamespace>
+    <AssemblyName>App_Adopciones_Master</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\cs-skin-elastic.css" />
+    <Content Include="assets\css\lib\chosen\chosen-sprite%402x.png" />
+    <Content Include="assets\css\lib\chosen\chosen-sprite.png" />
+    <Content Include="assets\css\lib\chosen\chosen.css" />
+    <Content Include="assets\css\lib\chosen\chosen.min.css" />
+    <Content Include="assets\css\lib\datatable\buttons.bootstrap.min.css" />
+    <Content Include="assets\css\lib\datatable\buttons.dataTables.min.css" />
+    <Content Include="assets\css\lib\datatable\dataTables.bootstrap.min.css" />
+    <Content Include="assets\css\lib\vector-map\jqvmap.min.css" />
+    <Content Include="assets\css\style.css" />
+    <Content Include="assets\fonts\icomoon\icomoon.svg" />
+    <Content Include="assets\fonts\icomoon\index.html" />
+    <Content Include="assets\js\dashboard.js" />
+    <Content Include="assets\js\init\chartjs-init.js" />
+    <Content Include="assets\js\init\datatables-init.js" />
+    <Content Include="assets\js\init\flot-chart-init.js" />
+    <Content Include="assets\js\init\fullcalendar-init.js" />
+    <Content Include="assets\js\init\gmap-init.js" />
+    <Content Include="assets\js\init\peitychart-init.js" />
+    <Content Include="assets\js\init\vector-init.js" />
+    <Content Include="assets\js\init\weather-init.js" />
+    <Content Include="assets\js\lib\chosen\chosen.jquery.js" />
+    <Content Include="assets\js\lib\chosen\chosen.jquery.min.js" />
+    <Content Include="assets\js\lib\chosen\chosen.proto.js" />
+    <Content Include="assets\js\lib\chosen\chosen.proto.min.js" />
+    <Content Include="assets\js\lib\data-table\buttons.bootstrap.min.js" />
+    <Content Include="assets\js\lib\data-table\buttons.colVis.min.js" />
+    <Content Include="assets\js\lib\data-table\buttons.flash.min.js" />
+    <Content Include="assets\js\lib\data-table\buttons.html5.min.js" />
+    <Content Include="assets\js\lib\data-table\buttons.print.min.js" />
+    <Content Include="assets\js\lib\data-table\dataTables.bootstrap.min.js" />
+    <Content Include="assets\js\lib\data-table\dataTables.buttons.min.js" />
+    <Content Include="assets\js\lib\data-table\datatables.min.js" />
+    <Content Include="assets\js\lib\data-table\jquery-1.12.4.js" />
+    <Content Include="assets\js\lib\data-table\jquery.dataTables.min.js" />
+    <Content Include="assets\js\lib\data-table\jszip.min.js" />
+    <Content Include="assets\js\lib\data-table\pdfmake.min.js" />
+    <Content Include="assets\js\lib\data-table\vfs_fonts.js" />
+    <Content Include="assets\js\lib\gmap\gmapApi.js" />
+    <Content Include="assets\js\lib\gmap\gmaps.js" />
+    <Content Include="assets\js\lib\gmap\gmaps.min.js" />
+    <Content Include="assets\js\main.js" />
+    <Content Include="assets\js\vmap.sampledata.js" />
+    <Content Include="assets\js\widgets.js" />
+    <Content Include="assets\scss\style.css" />
+    <Content Include="images\admin.jpg" />
+    <Content Include="images\avatar\1.jpg" />
+    <Content Include="images\avatar\2.jpg" />
+    <Content Include="images\avatar\3.jpg" />
+    <Content Include="images\avatar\4.jpg" />
+    <Content Include="images\avatar\5.jpg" />
+    <Content Include="images\avatar\6.jpg" />
+    <Content Include="images\avatar\64-1.jpg" />
+    <Content Include="images\avatar\64-2.jpg" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logo2.png" />
+    <Content Include="InicioSesion\Index.html" />
+    <Content Include="InicioSesion\Login.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="InicioSesion\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioSesion\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\css\style.css.map" />
+    <Content Include="assets\fonts\icomoon\icomoon.eot" />
+    <Content Include="assets\fonts\icomoon\icomoon.ttf" />
+    <Content Include="assets\fonts\icomoon\icomoon.woff" />
+    <Content Include="assets\scss\style.css.map" />
+    <Content Include="assets\scss\style.scss" />
+    <Content Include="images\.gitignore" />
+    <Content Include="images\logo.psd" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">
+      <Project>{55c4867d-3b24-4d27-a171-e7dac0cebc3c}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CapaNegocio\CapaNegocio.csproj">
+      <Project>{76531d27-4a4b-437a-911d-c38a44b560e3}</Project>
+      <Name>CapaNegocio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56410</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56410/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

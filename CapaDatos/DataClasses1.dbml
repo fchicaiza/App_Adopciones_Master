@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="db_adopciones" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LAPTOP-JNKRGTMA;Initial Catalog=db_adopciones;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="db_adopcionesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_adoptante" Member="tbl_adoptante">
+    <Type Name="tbl_adoptante">
+      <Column Name="id_adop" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="est_adop" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="int_persona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_adoptante_tbl_canditado_adoptante" Member="tbl_canditado_adoptante" ThisKey="id_adop" OtherKey="id_adoptante" Type="tbl_canditado_adoptante" />
+      <Association Name="tbl_personas_tbl_adoptante" Member="tbl_personas" ThisKey="int_persona" OtherKey="id_per" Type="tbl_personas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_candidato" Member="tbl_candidato">
+    <Type Name="tbl_candidato">
+      <Column Name="des_can" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="orig_can" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="nom_can" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="img_can" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="qrcd_can" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="est_can" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_can" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_historiaclinica" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_candidato_tbl_candidato_tutor" Member="tbl_candidato_tutor" ThisKey="id_can" OtherKey="id_candidato" Type="tbl_candidato_tutor" />
+      <Association Name="tbl_candidato_tbl_canditado_adoptante" Member="tbl_canditado_adoptante" ThisKey="id_can" OtherKey="id_cadidato" Type="tbl_canditado_adoptante" />
+      <Association Name="tbl_historia_clinica_tbl_candidato" Member="tbl_historia_clinica" ThisKey="id_historiaclinica" OtherKey="id_htcl" Type="tbl_historia_clinica" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_candidato_tutor" Member="tbl_candidato_tutor">
+    <Type Name="tbl_candidato_tutor">
+      <Column Name="id_ca_tut" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_candidato" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_tutor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="est_can_tut" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="tbl_candidato_tbl_candidato_tutor" Member="tbl_candidato" ThisKey="id_candidato" OtherKey="id_can" Type="tbl_candidato" IsForeignKey="true" />
+      <Association Name="tbl_tutor_tbl_candidato_tutor" Member="tbl_tutor" ThisKey="id_tutor" OtherKey="id_tut" Type="tbl_tutor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_canditado_adoptante" Member="tbl_canditado_adoptante">
+    <Type Name="tbl_canditado_adoptante">
+      <Column Name="id_can_ado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_cadidato" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_adoptante" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="est_can_ado" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="tbl_adoptante_tbl_canditado_adoptante" Member="tbl_adoptante" ThisKey="id_adoptante" OtherKey="id_adop" Type="tbl_adoptante" IsForeignKey="true" />
+      <Association Name="tbl_candidato_tbl_canditado_adoptante" Member="tbl_candidato" ThisKey="id_cadidato" OtherKey="id_can" Type="tbl_candidato" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_desparacitacion" Member="tbl_desparacitacion">
+    <Type Name="tbl_desparacitacion">
+      <Column Name="id_des" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="des_des" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="fec_des" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="est_des" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="tbl_desparacitacion_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_des" OtherKey="id_desparacita" Type="tbl_historia_clinica" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_especie" Member="tbl_especie">
+    <Type Name="tbl_especie">
+      <Column Name="id_esp" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="des_esp" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="est_esp" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="tbl_especie_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_esp" OtherKey="id_especie" Type="tbl_historia_clinica" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_historia_clinica" Member="tbl_historia_clinica">
+    <Type Name="tbl_historia_clinica">
+      <Column Name="num_htcl" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id_especie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_raza" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sex_htcl" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="eda_htcl" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="cara_htcl" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="id_vacunacion" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_desparacita" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hist_htcl" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="diet_htcl" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="estrep_htcl" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="proc_htcl" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pes_htcl" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="tall_htcl" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="enfe_htcl" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="est_htcl" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_htcl" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="tbl_historia_clinica_tbl_candidato" Member="tbl_candidato" ThisKey="id_htcl" OtherKey="id_historiaclinica" Type="tbl_candidato" />
+      <Association Name="tbl_desparacitacion_tbl_historia_clinica" Member="tbl_desparacitacion" ThisKey="id_desparacita" OtherKey="id_des" Type="tbl_desparacitacion" IsForeignKey="true" />
+      <Association Name="tbl_especie_tbl_historia_clinica" Member="tbl_especie" ThisKey="id_especie" OtherKey="id_esp" Type="tbl_especie" IsForeignKey="true" />
+      <Association Name="tbl_raza_tbl_historia_clinica" Member="tbl_raza" ThisKey="id_raza" OtherKey="id_raza" Type="tbl_raza" IsForeignKey="true" />
+      <Association Name="tbl_vacunacion_tbl_historia_clinica" Member="tbl_vacunacion" ThisKey="id_vacunacion" OtherKey="id_vacu" Type="tbl_vacunacion" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_personas" Member="tbl_personas">
+    <Type Name="tbl_personas">
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="tel_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ema_per" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="cllp_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="cll_sec_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="numc_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_ro" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_personas_tbl_adoptante" Member="tbl_adoptante" ThisKey="id_per" OtherKey="int_persona" Type="tbl_adoptante" />
+      <Association Name="tbl_personas_tbl_tutor" Member="tbl_tutor" ThisKey="id_per" OtherKey="id_persona" Type="tbl_tutor" />
+      <Association Name="tbl_rol_tbl_personas" Member="tbl_rol" ThisKey="id_ro" OtherKey="id_rol" Type="tbl_rol" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_raza" Member="tbl_raza">
+    <Type Name="tbl_raza">
+      <Column Name="id_raza" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="des_raza" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tbl_raza_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_raza" OtherKey="id_raza" Type="tbl_historia_clinica" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_rol" Member="tbl_rol">
+    <Type Name="tbl_rol">
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="tbl_rol_tbl_personas" Member="tbl_personas" ThisKey="id_rol" OtherKey="id_ro" Type="tbl_personas" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_tutor" Member="tbl_tutor">
+    <Type Name="tbl_tutor">
+      <Column Name="est_tut" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_tut" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_persona" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_tutor_tbl_candidato_tutor" Member="tbl_candidato_tutor" ThisKey="id_tut" OtherKey="id_tutor" Type="tbl_candidato_tutor" />
+      <Association Name="tbl_personas_tbl_tutor" Member="tbl_personas" ThisKey="id_persona" OtherKey="id_per" Type="tbl_personas" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_vacunacion" Member="tbl_vacunacion">
+    <Type Name="tbl_vacunacion">
+      <Column Name="id_vacu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="des_vacu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="fec_vacu" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="est_vacu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="tbl_vacunacion_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_vacu" OtherKey="id_vacunacion" Type="tbl_historia_clinica" />
+    </Type>
+  </Table>
+</Database>
