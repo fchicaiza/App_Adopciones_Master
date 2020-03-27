@@ -42,7 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorEncriptacion.cs" />
+    <Compile Include="ControladorLogin.cs" />
+    <Compile Include="CotroladorRegistro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValCedula.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CapaDatos\CapaDatos.csproj">

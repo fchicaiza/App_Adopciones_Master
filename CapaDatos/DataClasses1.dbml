@@ -138,4 +138,37 @@
       <Association Name="tbl_vacunacion_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_vacu" OtherKey="id_vacunacion" Type="tbl_historia_clinica" />
     </Type>
   </Table>
+  <Function Name="dbo.Sp_Login" Method="Sp_Login">
+    <ElementType Name="Sp_LoginResult">
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ema_per" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_ro" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_Registro" Method="Sp_Registro">
+    <ElementType Name="Sp_RegistroResult">
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ema_per" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="id_ro" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>
