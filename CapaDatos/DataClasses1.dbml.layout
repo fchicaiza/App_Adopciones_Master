@@ -74,7 +74,7 @@
         <elementListCompartment Id="2cdd4c65-4490-4bd7-9eca-38899ec9dede" absoluteBounds="0.765, 11.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(8.25 : 4.53929768880208); (8.54166666666667 : 4.53929768880208 : JumpStart); (8.70833333333333 : 4.53929768880208 : JumpEnd); (9 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(8.25 : 4.53929768880208); (9 : 4.53929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/tbl_candidato/tbl_candidato_tbl_candidato_tutor" />
       <nodes>
         <classShapeMoniker Id="f3ef47e0-385c-48c9-aba4-ff917b7ff583" />
@@ -95,7 +95,7 @@
         <classShapeMoniker Id="c0d1b721-f05b-425a-89e0-6d809803da98" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 4.54890055338542); (6.25 : 4.54890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 4.54890055338542); (5.79166666666667 : 4.54890055338542 : JumpStart); (5.95833333333333 : 4.54890055338542 : JumpEnd); (6.25 : 4.54890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DataClasses1DataContext/tbl_historia_clinica/tbl_historia_clinica_tbl_candidato" />
       <nodes>
         <classShapeMoniker Id="f3d72d35-8f66-4cc0-93a3-533d476e49fc" />

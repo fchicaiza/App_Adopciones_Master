@@ -10,7 +10,7 @@
 namespace App_Adopciones_Master.InicioSesion {
     
     
-    public partial class Registro {
+    public partial class FormAsignarClave {
         
         /// <summary>
         /// Control form1.
@@ -22,21 +22,48 @@ namespace App_Adopciones_Master.InicioSesion {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control txt_email.
+        /// Control txt_temp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_email;
+        protected global::System.Web.UI.WebControls.TextBox txt_temp;
         
         /// <summary>
-        /// Control btn_envio.
+        /// Control txt_usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_envio;
+        protected global::System.Web.UI.WebControls.TextBox txt_usuario;
+        
+        /// <summary>
+        /// Control txt_neva.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_neva;
+        
+        /// <summary>
+        /// Control txt_conf.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_conf;
+        
+        /// <summary>
+        /// Control btn_clave.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_clave;
     }
 }

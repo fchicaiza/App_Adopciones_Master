@@ -171,4 +171,28 @@
       <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.Sp_InsertarUsuario" Method="Sp_InsertarUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="estado" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="temporal" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_BuscarClaveTem" Method="Sp_BuscarClaveTem">
+    <ElementType Name="Sp_BuscarClaveTemResult">
+      <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_BuscarIdUsu" Method="Sp_BuscarIdUsu">
+    <Parameter Name="cltem" Type="System.String" DbType="VarChar(10)" />
+    <ElementType Name="Sp_BuscarIdUsuResult">
+      <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

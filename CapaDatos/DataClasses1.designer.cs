@@ -207,6 +207,27 @@ namespace CapaDatos
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_RegistroResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_InsertarUsuario")]
+		public int Sp_InsertarUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string clave, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string temporal)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, clave, estado, email, temporal);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarClaveTem")]
+		public ISingleResult<Sp_BuscarClaveTemResult> Sp_BuscarClaveTem()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_BuscarClaveTemResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarIdUsu")]
+		public ISingleResult<Sp_BuscarIdUsuResult> Sp_BuscarIdUsu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cltem)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cltem);
+			return ((ISingleResult<Sp_BuscarIdUsuResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_adoptante")]
@@ -3538,6 +3559,148 @@ namespace CapaDatos
 				if ((this._est_rol != value))
 				{
 					this._est_rol = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_BuscarClaveTemResult
+	{
+		
+		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
+		
+		public Sp_BuscarClaveTemResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(50)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_BuscarIdUsuResult
+	{
+		
+		private int _id_usu;
+		
+		public Sp_BuscarIdUsuResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
 				}
 			}
 		}

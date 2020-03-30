@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\sweetalert.css" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\klorofilpro.png" />
@@ -78,6 +79,12 @@
     <Content Include="assets\img\uploaded-file.jpg" />
     <Content Include="assets\img\user-small.png" />
     <Content Include="assets\img\user.png" />
+    <Content Include="assets\jquery\jquery.js" />
+    <Content Include="assets\jquery\jquery.min.js" />
+    <Content Include="assets\jquery\Utilitarios.js" />
+    <Content Include="assets\js\Alertas.js" />
+    <Content Include="assets\js\sweetalert.min.js" />
+    <Content Include="assets\js\SweetAlert2.js" />
     <Content Include="assets\scripts\common.js" />
     <Content Include="assets\vendor\bootstrap-datepicker\bootstrap-datepicker.min.js" />
     <Content Include="assets\vendor\bootstrap-datepicker\bootstrap-datepicker3.css" />
@@ -306,12 +313,20 @@
     <Content Include="assets\vendor\toastr\toastr.css" />
     <Content Include="assets\vendor\toastr\toastr.js" />
     <Content Include="assets\vendor\toastr\toastr.min.css" />
+    <Content Include="InicioSesion\FormAsignarClave.aspx" />
     <Content Include="InicioSesion\Index.html" />
     <Content Include="InicioSesion\Login.aspx" />
     <Content Include="InicioSesion\Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InicioSesion\FormAsignarClave.aspx.cs">
+      <DependentUpon>FormAsignarClave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioSesion\FormAsignarClave.aspx.designer.cs">
+      <DependentUpon>FormAsignarClave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -32,53 +32,21 @@
 							<div class="logo text-center"><img src="../assets/img/logo.png" alt="DiffDash"/></div>
 							<p class="lead">Crear una cuenta</p>
 						</div>
-					
-							<div class="form-group">
-                                <label for="signup-email" class="control-label sr-only">DNI</label>
-								<asp:TextBox  runat="server" class="form-control" id="txt_dni" placeholder="Cédula / RUC / Pasaporte"></asp:TextBox>
-                              </div>
 
-
-                                <div class="form-group">
-                                <label for="signup-email" class="control-label sr-only">Nombres</label>
-								<asp:TextBox  runat="server" class="form-control" id="txt_nombre" placeholder="Nombres"></asp:TextBox>
-                                </div>
-
-                                
-                                <div class="form-group">
-                                <label for="signup-email" class="control-label sr-only">Apellidos</label>
-								<asp:TextBox  runat="server" class="form-control" id="txt_apellido" placeholder="Apellidos"></asp:TextBox>
-                                </div>
 
                                <div class="form-group">
 								<label for="signup-email" class="control-label sr-only">Email</label>
-								<asp:TextBox TextMode="email" runat="server" class="form-control" id="txt_email" placeholder="Your email"></asp:TextBox>                                    
+								<asp:TextBox TextMode="email" runat="server" class="form-control" id="txt_email" placeholder="Ingrese su correo electrónico"></asp:TextBox>                                    
                                 </div>
 
-                               <div class="form-group">
-								<label for="signup-password" class="control-label sr-only">Clave</label>
-								<asp:TextBox runat="server" type="password" class="form-control" id="txt_clave" placeholder="Clave"></asp:TextBox>
-							    </div>
-
-                                
-                                <div class="form-group">
-								<label for="signup-password" class="control-label sr-only">Cofirmar Clave</label>
-								<asp:TextBox runat="server" type="password" class="form-control" id="txt_rclave" placeholder="Cofirmar clave"></asp:TextBox>
-							    </div>
-
-                                  <div class="form-group">
-								<label for="signup-password" class="control-label sr-only">Agregar foto de perfil</label>
-								<asp:FileUpload ID="img_perfil" CssClass="form-control" runat="server" />
-							    </div>
-
                                 
 
-							<asp:Button class="btn btn-primary btn-lg btn-block" runat="server" ID="btn_registro" OnClick="btn_registro_Click" Text="REGISTRAR"></asp:Button>
+							<asp:Button class="btn btn-primary btn-lg btn-block" runat="server" ID="btn_envio" OnClick="btn_envio_Click" Text="Registrar"></asp:Button>
 							<div class="bottom">
-								<span class="helper-text">Ya tiene una cuenta? <a href="page-login.html">Login</a></span>
+								<span class="helper-text">Ya tiene una cuenta? <a href="Login.aspx">Login</a></span>
 							</div>
 				
-
+                        </div>
 					</div>
 		
 			</div>
