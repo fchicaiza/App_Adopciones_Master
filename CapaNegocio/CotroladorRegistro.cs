@@ -28,7 +28,7 @@ namespace CapaNegocio
             usuarios.UseDefaultCredentials = false;
             usuarios.Credentials = new System.Net.NetworkCredential("fchicaiza.g1990@gmail.com", "1989Y1990g");
             usuarios.Host = "smtp.gmail.com";
-            email.Subject = "Recuperar Contraseña";
+            email.Subject = "Clave Temporal";
             email.Body = "Su clave temporal es :" + " " + clave;
             usuarios.Send(email);
         }
@@ -50,11 +50,20 @@ namespace CapaNegocio
             var corr = conn.Sp_BuscarClaveTem().FirstOrDefault(co => co.ema_usu.Equals(correo));
             return corr;
         }
-        public Sp_BuscarClaveTemResult BuscarId(string temp)
+        public Sp_BuscarClaveTemResult BuscarClaveTem(string temp)
         {
             var ide = conn.Sp_BuscarClaveTem().FirstOrDefault(i=>i.cltm_usu.Equals(temp));
             return ide;
 
+        }
+         public Sp_BuscarIdEmailResult BuscarCorreo(string mail) // busca con linq el primer resultado
+        {
+            var corr = conn.Sp_BuscarIdEmail().FirstOrDefault(co => co.ema_usu.Equals(mail));
+            return corr;
+        }
+     public int?  IdMail(string mail)
+        {
+            return conn.Sp_BuscarIdEmail().First(li=>li.ema_usu == mail).id_usu;
         }
 
     }

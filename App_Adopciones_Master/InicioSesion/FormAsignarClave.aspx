@@ -71,6 +71,9 @@
 	</div>
 	<!-- END WRAPPER -->
     </form>
+     <!-- BOOTSTRAP -->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/vendor/bootstrap/js/npm.js"></script>
      <!-- JQUERY -->
     <script src="../assets/jquery/jquery.js"></script>
     <script src="../assets/jquery/jquery.min.js"></script>

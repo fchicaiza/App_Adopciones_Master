@@ -63,6 +63,9 @@ namespace CapaDatos
     partial void Inserttbl_tutor(tbl_tutor instance);
     partial void Updatetbl_tutor(tbl_tutor instance);
     partial void Deletetbl_tutor(tbl_tutor instance);
+    partial void Inserttbl_usuario(tbl_usuario instance);
+    partial void Updatetbl_usuario(tbl_usuario instance);
+    partial void Deletetbl_usuario(tbl_usuario instance);
     partial void Inserttbl_vacunacion(tbl_vacunacion instance);
     partial void Updatetbl_vacunacion(tbl_vacunacion instance);
     partial void Deletetbl_vacunacion(tbl_vacunacion instance);
@@ -186,6 +189,14 @@ namespace CapaDatos
 			}
 		}
 		
+		public System.Data.Linq.Table<tbl_usuario> tbl_usuario
+		{
+			get
+			{
+				return this.GetTable<tbl_usuario>();
+			}
+		}
+		
 		public System.Data.Linq.Table<tbl_vacunacion> tbl_vacunacion
 		{
 			get
@@ -220,6 +231,34 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_BuscarClaveTemResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarMailRegistro")]
+		public ISingleResult<Sp_BuscarMailRegistroResult> Sp_BuscarMailRegistro([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id);
+			return ((ISingleResult<Sp_BuscarMailRegistroResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_CompararMail")]
+		public ISingleResult<Sp_CompararMailResult> Sp_CompararMail([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string mail)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), mail);
+			return ((ISingleResult<Sp_CompararMailResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarIdEmail")]
+		public ISingleResult<Sp_BuscarIdEmailResult> Sp_BuscarIdEmail()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_BuscarIdEmailResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_EditarUsuario1")]
+		public int Sp_EditarUsuario1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, usuario, clave);
+			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarIdUsu")]
@@ -2120,8 +2159,6 @@ namespace CapaDatos
 		
 		private string _tel_per;
 		
-		private string _ema_per;
-		
 		private string _cllp_per;
 		
 		private string _cll_sec_per;
@@ -2134,11 +2171,17 @@ namespace CapaDatos
 		
 		private System.Nullable<int> _id_ro;
 		
+		private System.Nullable<int> _id_usuario;
+		
+		private string _img_per;
+		
 		private EntitySet<tbl_adoptante> _tbl_adoptante;
 		
 		private EntitySet<tbl_tutor> _tbl_tutor;
 		
 		private EntityRef<tbl_rol> _tbl_rol;
+		
+		private EntityRef<tbl_usuario> _tbl_usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -2152,8 +2195,6 @@ namespace CapaDatos
     partial void Onape_perChanged();
     partial void Ontel_perChanging(string value);
     partial void Ontel_perChanged();
-    partial void Onema_perChanging(string value);
-    partial void Onema_perChanged();
     partial void Oncllp_perChanging(string value);
     partial void Oncllp_perChanged();
     partial void Oncll_sec_perChanging(string value);
@@ -2166,6 +2207,10 @@ namespace CapaDatos
     partial void Onid_perChanged();
     partial void Onid_roChanging(System.Nullable<int> value);
     partial void Onid_roChanged();
+    partial void Onid_usuarioChanging(System.Nullable<int> value);
+    partial void Onid_usuarioChanged();
+    partial void Onimg_perChanging(string value);
+    partial void Onimg_perChanged();
     #endregion
 		
 		public tbl_personas()
@@ -2173,6 +2218,7 @@ namespace CapaDatos
 			this._tbl_adoptante = new EntitySet<tbl_adoptante>(new Action<tbl_adoptante>(this.attach_tbl_adoptante), new Action<tbl_adoptante>(this.detach_tbl_adoptante));
 			this._tbl_tutor = new EntitySet<tbl_tutor>(new Action<tbl_tutor>(this.attach_tbl_tutor), new Action<tbl_tutor>(this.detach_tbl_tutor));
 			this._tbl_rol = default(EntityRef<tbl_rol>);
+			this._tbl_usuario = default(EntityRef<tbl_usuario>);
 			OnCreated();
 		}
 		
@@ -2252,26 +2298,6 @@ namespace CapaDatos
 					this._tel_per = value;
 					this.SendPropertyChanged("tel_per");
 					this.Ontel_perChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_per", DbType="VarChar(100)")]
-		public string ema_per
-		{
-			get
-			{
-				return this._ema_per;
-			}
-			set
-			{
-				if ((this._ema_per != value))
-				{
-					this.Onema_perChanging(value);
-					this.SendPropertyChanging();
-					this._ema_per = value;
-					this.SendPropertyChanged("ema_per");
-					this.Onema_perChanged();
 				}
 			}
 		}
@@ -2400,6 +2426,50 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
+		public System.Nullable<int> id_usuario
+		{
+			get
+			{
+				return this._id_usuario;
+			}
+			set
+			{
+				if ((this._id_usuario != value))
+				{
+					if (this._tbl_usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_usuarioChanging(value);
+					this.SendPropertyChanging();
+					this._id_usuario = value;
+					this.SendPropertyChanged("id_usuario");
+					this.Onid_usuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_per", DbType="VarChar(200)")]
+		public string img_per
+		{
+			get
+			{
+				return this._img_per;
+			}
+			set
+			{
+				if ((this._img_per != value))
+				{
+					this.Onimg_perChanging(value);
+					this.SendPropertyChanging();
+					this._img_per = value;
+					this.SendPropertyChanged("img_per");
+					this.Onimg_perChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_personas_tbl_adoptante", Storage="_tbl_adoptante", ThisKey="id_per", OtherKey="int_persona")]
 		public EntitySet<tbl_adoptante> tbl_adoptante
 		{
@@ -2456,6 +2526,40 @@ namespace CapaDatos
 						this._id_ro = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("tbl_rol");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_usuario_tbl_personas", Storage="_tbl_usuario", ThisKey="id_usuario", OtherKey="id_usu", IsForeignKey=true)]
+		public tbl_usuario tbl_usuario
+		{
+			get
+			{
+				return this._tbl_usuario.Entity;
+			}
+			set
+			{
+				tbl_usuario previousValue = this._tbl_usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_usuario.Entity = null;
+						previousValue.tbl_personas.Remove(this);
+					}
+					this._tbl_usuario.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_personas.Add(this);
+						this._id_usuario = value.id_usu;
+					}
+					else
+					{
+						this._id_usuario = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_usuario");
 				}
 			}
 		}
@@ -2933,6 +3037,216 @@ namespace CapaDatos
 		{
 			this.SendPropertyChanging();
 			entity.tbl_tutor = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tbl_usuario")]
+	public partial class tbl_usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
+		
+		private EntitySet<tbl_personas> _tbl_personas;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_usuChanging(int value);
+    partial void Onid_usuChanged();
+    partial void Onuser_usuChanging(string value);
+    partial void Onuser_usuChanged();
+    partial void Onpass_usuChanging(string value);
+    partial void Onpass_usuChanged();
+    partial void Onest_usuChanging(System.Nullable<char> value);
+    partial void Onest_usuChanged();
+    partial void Onema_usuChanging(string value);
+    partial void Onema_usuChanged();
+    partial void Oncltm_usuChanging(string value);
+    partial void Oncltm_usuChanged();
+    #endregion
+		
+		public tbl_usuario()
+		{
+			this._tbl_personas = new EntitySet<tbl_personas>(new Action<tbl_personas>(this.attach_tbl_personas), new Action<tbl_personas>(this.detach_tbl_personas));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this.Onid_usuChanging(value);
+					this.SendPropertyChanging();
+					this._id_usu = value;
+					this.SendPropertyChanged("id_usu");
+					this.Onid_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this.Onuser_usuChanging(value);
+					this.SendPropertyChanging();
+					this._user_usu = value;
+					this.SendPropertyChanged("user_usu");
+					this.Onuser_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this.Onpass_usuChanging(value);
+					this.SendPropertyChanging();
+					this._pass_usu = value;
+					this.SendPropertyChanged("pass_usu");
+					this.Onpass_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this.Onest_usuChanging(value);
+					this.SendPropertyChanging();
+					this._est_usu = value;
+					this.SendPropertyChanged("est_usu");
+					this.Onest_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this.Onema_usuChanging(value);
+					this.SendPropertyChanging();
+					this._ema_usu = value;
+					this.SendPropertyChanged("ema_usu");
+					this.Onema_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this.Oncltm_usuChanging(value);
+					this.SendPropertyChanging();
+					this._cltm_usu = value;
+					this.SendPropertyChanged("cltm_usu");
+					this.Oncltm_usuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_usuario_tbl_personas", Storage="_tbl_personas", ThisKey="id_usu", OtherKey="id_usuario")]
+		public EntitySet<tbl_personas> tbl_personas
+		{
+			get
+			{
+				return this._tbl_personas;
+			}
+			set
+			{
+				this._tbl_personas.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tbl_personas(tbl_personas entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_usuario = this;
+		}
+		
+		private void detach_tbl_personas(tbl_personas entity)
+		{
+			this.SendPropertyChanging();
+			entity.tbl_usuario = null;
 		}
 	}
 	
@@ -3680,10 +3994,188 @@ namespace CapaDatos
 		}
 	}
 	
+	public partial class Sp_BuscarMailRegistroResult
+	{
+		
+		private string _ema_usu;
+		
+		public Sp_BuscarMailRegistroResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_CompararMailResult
+	{
+		
+		private string _ema_usu;
+		
+		public Sp_CompararMailResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_BuscarIdEmailResult
+	{
+		
+		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
+		
+		public Sp_BuscarIdEmailResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
+				}
+			}
+		}
+	}
+	
 	public partial class Sp_BuscarIdUsuResult
 	{
 		
 		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
 		
 		public Sp_BuscarIdUsuResult()
 		{
@@ -3701,6 +4193,86 @@ namespace CapaDatos
 				if ((this._id_usu != value))
 				{
 					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
 				}
 			}
 		}

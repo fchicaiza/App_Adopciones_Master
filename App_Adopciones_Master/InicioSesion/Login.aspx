@@ -37,22 +37,22 @@
 					
 							<div class="form-group">
 								<label for="signin-email" class="control-label sr-only">Email</label>
-								<input type="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email"/>
+								<asp:TextBox runat="server"  class="form-control" id="txt_usuario" placeholder="Correo o Usuario"></asp:TextBox>
 							</div>
 							<div class="form-group">
 								<label for="signin-password" class="control-label sr-only">Password</label>
-								<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password"/>
+								<asp:TextBox runat="server" TextMode="password" class="form-control" id="txt_clave" placeholder="Clave"></asp:TextBox>
 							</div>
 							<div class="form-group clearfix">
 								<label class="fancy-checkbox element-left">
 									<input type="checkbox"/>
-									<span>Remember me</span>
+									<span>Recordar Clave</span>
 								</label>
-								<span class="helper-text element-right">Don't have an account? <a href="page-register.html">Register</a></span>
+								<span class="helper-text element-right">No tienes una cuenta? <a href="page-register.html">Registrarse</a></span>
 							</div>
-							<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+							<asp:Button type="submit" class="btn btn-primary btn-lg btn-block" OnClick="btn_login_Click" runat="server" Id="btn_login" Text="Ingresar"></asp:Button>
 							<div class="bottom">
-								<span class="helper-text"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
+								<span class="helper-text"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Olvidó su clave?</a></span>
 							</div>
 					
 					</div>
@@ -64,3 +64,4 @@
     </form>
 </body>
 </html>
+

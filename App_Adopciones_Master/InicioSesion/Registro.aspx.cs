@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using CapaDatos;
 using CapaNegocio;
 using Validaciones;
+
+
 using static CapaNegocio.ControladorEncriptacion;
 
 namespace App_Adopciones_Master.InicioSesion
@@ -14,40 +16,32 @@ namespace App_Adopciones_Master.InicioSesion
 
     public partial class Registro : System.Web.UI.Page
     {
+        DataClasses1DataContext conn = new DataClasses1DataContext();
         public string imagen;
         CotroladorRegistro reg = new CotroladorRegistro();
         ValCedula val = new ValCedula();
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        //protected void btn_registro_Click(object sender, EventArgs e)
-        //{
-        //    if (img_perfil.HasFile)
-        //    {
-        //        string imag = img_perfil.FileName;
-        //        string ruta = "../assets/img/" + imag;
-        //        imagen = "../assets/img/" + imag;
-        //        img_perfil.SaveAs(Server.MapPath(ruta));
-        //    }
-        //    if (reg.VerificarRegistro(txt_dni.Text) != null)
-        //    {
-        //        ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>registrado();</script>");
 
-        //    }
-        //    else if (val.ValidarCedula(txt_dni.Text) == true)
-        //    {
-        //        // falta mantenimientos login y registro
-        //    }
-
-        //}
 
         protected void btn_envio_Click(object sender, EventArgs e)
         {
+
+            
+            if (reg.BuscarCorreo(txt_email.Text)!= null)
+            {
+                Response.Write("<script>window.alert('Correo electrónico ya existe')</script>");
+            }else
+
             if (txt_email != null)
             {
+
 
                 Random rdn = new Random();
                 string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890%$#@";
@@ -80,20 +74,31 @@ namespace App_Adopciones_Master.InicioSesion
                     if(corr != null)
                     {
                         reg.EnviarClTemp(corr.ema_usu, corr.cltm_usu);
-                        ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>enviado();</script>");
+                         Response.Write("<script>window.alert('Correo enviado correctamente, revise su bandeja de entrada," +
+                             "si no lo encuentra, revise en correo no deseado')</script>");
                     }
                     else
                     {
-                        ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>noencontrado();</script>");
+                        Response.Write("<script>window.alert('Correo no encontrado')</script>");
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.Write(ex);
-                    ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>noenviado();</script>");
+
+                    Response.Write("<script>window.alert('Correo no enviado')</script>");
+
                 }
+               string mail = txt_email.Text;
+
+                int id = Convert.ToInt32(reg.IdMail(mail));
+
+                Response.Redirect("~/InicioSesion/FormAsignarClave.aspx?id=" + id);
+
             }
-    }
-}
+
+        }
+
+        }
 
 }
