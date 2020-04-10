@@ -36,8 +36,9 @@ namespace App_Adopciones_Master.InicioSesion
             
             if (reg.BuscarCorreo(txt_email.Text)!= null)
             {
-                Response.Write("<script>window.alert('Correo electrónico ya existe')</script>");
-            }else
+                ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>siexiste();</script>");
+            }
+            else
 
             if (txt_email != null)
             {
@@ -61,32 +62,36 @@ namespace App_Adopciones_Master.InicioSesion
                 conn.Sp_InsertarUsuario(
                 Convert.ToString(" "),
                 Convert.ToString(" "),
-                Convert.ToChar("A"),
+                Convert.ToChar("A"),                
                 txt_email.Text,
-                temp
+                temp,
+                Convert.ToInt32("2")
                 );
 
 
                 Sp_BuscarClaveTemResult corr = reg.EnviarCorreo(txt_email.Text);
+                string email = txt_email.Text;
+
+                int ide = Convert.ToInt32(reg.IdMail(email));
 
                 try
                 {
                     if(corr != null)
                     {
                         reg.EnviarClTemp(corr.ema_usu, corr.cltm_usu);
-                         Response.Write("<script>window.alert('Correo enviado correctamente, revise su bandeja de entrada," +
-                             "si no lo encuentra, revise en correo no deseado')</script>");
+                        
                     }
+
                     else
                     {
-                        Response.Write("<script>window.alert('Correo no encontrado')</script>");
+                        ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>noencontrado();</script>");
                     }
                 }
                 catch (Exception ex)
                 {
                     Console.Write(ex);
 
-                    Response.Write("<script>window.alert('Correo no enviado')</script>");
+                    ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>noenviado();</script>");
 
                 }
                string mail = txt_email.Text;

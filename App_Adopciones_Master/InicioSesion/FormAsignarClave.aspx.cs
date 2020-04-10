@@ -18,7 +18,12 @@ namespace App_Adopciones_Master.InicioSesion
         
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!this.IsPostBack)
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alerta", "<script>enviado();</script>");
+            }
+      
+            
         }
 
         protected void btn_clave_Click(object sender, EventArgs e)
@@ -45,6 +50,10 @@ namespace App_Adopciones_Master.InicioSesion
                               Encrypt.GetSHA256(txt_neva.Text)
                             );
                         Response.Write("<script>window.alert('Su contraseña se ha guardado exitosamente')</script>");
+                       
+
+                        Response.Redirect("~/InicioSesion/Login.aspx?id=" + id);
+
                     }
                     else
                     {
@@ -57,8 +66,7 @@ namespace App_Adopciones_Master.InicioSesion
                     Response.Write("<script>window.alert('Error!! No se ha encontrado la clave temporal')</script>");
                 }
             }
-
-           
+ 
 
         }
 

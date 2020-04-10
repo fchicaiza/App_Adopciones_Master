@@ -16,10 +16,12 @@
 	<link rel="stylesheet" href="../assets/css/demo.css"/>
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet"/>
-	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png"/>
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png"/>
-
+	<!-- SWEETALERT -->
+    <link rel="stylesheet" href="../assets/css/sweetalert.css"/>
+    <!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png"/>
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon.png"/>
+ 
     <title>Iniciar Sesión</title>
 </head>
 <body>
@@ -48,11 +50,11 @@
 									<input type="checkbox"/>
 									<span>Recordar Clave</span>
 								</label>
-								<span class="helper-text element-right">No tienes una cuenta? <a href="page-register.html">Registrarse</a></span>
+								<span class="helper-text element-right">No tienes una cuenta? <a href="Registro.aspx">Registrarse</a></span>
 							</div>
 							<asp:Button type="submit" class="btn btn-primary btn-lg btn-block" OnClick="btn_login_Click" runat="server" Id="btn_login" Text="Ingresar"></asp:Button>
 							<div class="bottom">
-								<span class="helper-text"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Olvidó su clave?</a></span>
+								<span class="helper-text"><i class="fa fa-lock"></i> <a href="RecordarClave.aspx">Olvidó su clave?</a></span>
 							</div>
 					
 					</div>
@@ -60,6 +62,16 @@
 			</div>
 		</div>
 	</div>
+         <!-- jQuery 2.2.3 -->
+        <script src="../assets/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.6 -->
+        <script src="../assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- iCheck -->
+        <script src="../assets/js/sweetalert.min.js"></script>
+        <script src="../assets/js/Alertas.js"></script>
+        <script src="../assets/js/SweetAlert2.js"></script>
+
 	<!-- END WRAPPER -->
     </form>
 </body>

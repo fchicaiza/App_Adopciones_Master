@@ -44,7 +44,7 @@ namespace CapaNegocio
 
         public Sp_LoginResult buscarEmail(string email)
         {
-            var mail = conn.Sp_Login().FirstOrDefault(em => em.ema_per.Equals(email));
+            var mail = conn.Sp_Login().FirstOrDefault(em => em.ema_usu.Equals(email));
             return mail;
         }
     }

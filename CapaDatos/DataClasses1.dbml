@@ -98,12 +98,10 @@
       <Column Name="numc_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="est_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_ro" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="img_per" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Association Name="tbl_personas_tbl_adoptante" Member="tbl_adoptante" ThisKey="id_per" OtherKey="int_persona" Type="tbl_adoptante" />
       <Association Name="tbl_personas_tbl_tutor" Member="tbl_tutor" ThisKey="id_per" OtherKey="id_persona" Type="tbl_tutor" />
-      <Association Name="tbl_rol_tbl_personas" Member="tbl_rol" ThisKey="id_ro" OtherKey="id_rol" Type="tbl_rol" IsForeignKey="true" />
       <Association Name="tbl_usuario_tbl_personas" Member="tbl_usuario" ThisKey="id_usuario" OtherKey="id_usu" Type="tbl_usuario" IsForeignKey="true" />
     </Type>
   </Table>
@@ -119,7 +117,7 @@
       <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="tbl_rol_tbl_personas" Member="tbl_personas" ThisKey="id_rol" OtherKey="id_ro" Type="tbl_personas" />
+      <Association Name="tbl_rol_tbl_usuario" Member="tbl_usuario" ThisKey="id_rol" OtherKey="id_roles" Type="tbl_usuario" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_tutor" Member="tbl_tutor">
@@ -135,11 +133,13 @@
     <Type Name="tbl_usuario">
       <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="pass_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="tbl_usuario_tbl_personas" Member="tbl_personas" ThisKey="id_usu" OtherKey="id_usuario" Type="tbl_personas" />
+      <Association Name="tbl_rol_tbl_usuario" Member="tbl_rol" ThisKey="id_roles" OtherKey="id_rol" Type="tbl_rol" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.tbl_vacunacion" Member="tbl_vacunacion">
@@ -151,22 +151,6 @@
       <Association Name="tbl_vacunacion_tbl_historia_clinica" Member="tbl_historia_clinica" ThisKey="id_vacu" OtherKey="id_vacunacion" Type="tbl_historia_clinica" />
     </Type>
   </Table>
-  <Function Name="dbo.Sp_Login" Method="Sp_Login">
-    <ElementType Name="Sp_LoginResult">
-      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="ema_per" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="id_ro" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="est_per" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Sp_Registro" Method="Sp_Registro">
     <ElementType Name="Sp_RegistroResult">
       <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -183,14 +167,6 @@
       <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </ElementType>
-  </Function>
-  <Function Name="dbo.Sp_InsertarUsuario" Method="Sp_InsertarUsuario">
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="clave" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="estado" Type="System.Char" DbType="Char(1)" />
-    <Parameter Name="email" Type="System.String" DbType="VarChar(200)" />
-    <Parameter Name="temporal" Type="System.String" DbType="VarChar(10)" />
-    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.Sp_BuscarClaveTem" Method="Sp_BuscarClaveTem">
     <ElementType Name="Sp_BuscarClaveTemResult">
@@ -224,12 +200,6 @@
       <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.Sp_EditarUsuario1" Method="Sp_EditarUsuario1">
-    <Parameter Name="id" Type="System.Int32" DbType="Int" />
-    <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
-    <Parameter Name="clave" Type="System.String" DbType="VarChar(20)" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.Sp_BuscarIdUsu" Method="Sp_BuscarIdUsu">
     <Parameter Name="cltem" Type="System.String" DbType="VarChar(10)" />
     <ElementType Name="Sp_BuscarIdUsuResult">
@@ -240,5 +210,30 @@
       <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
       <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_Login" Method="Sp_Login">
+    <ElementType Name="Sp_LoginResult">
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_EditarUsuario1" Method="Sp_EditarUsuario1">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_InsertarUsuario" Method="Sp_InsertarUsuario">
+    <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="clave" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="estado" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="email" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="temporal" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="idrol" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

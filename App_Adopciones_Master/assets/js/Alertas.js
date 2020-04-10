@@ -54,6 +54,18 @@ function noexiste() {
     })
 }
 
+function siexiste() {
+    Swal.fire({
+        icon: 'error',
+        html: '<div><h2> Error!!</h2></div><div><h4>El correo elecctrónico ya está registrado en la base de datos</h4></div>',
+        footer: '<h4><div class="row">  <div class="col-sm-6"><a href="Login.aspx">Login</a></div> </div></h4>',
+        width: '40%',
+        confirmButtonColor: '#C72E2E',
+        confirmButtonText: '<h5>Intentar otra vez</h5>'
+
+    })
+}
+
 
 function correcto() {
 
@@ -68,13 +80,14 @@ function correcto() {
 function enviado() {
     Swal.fire({
         icon: 'sucess',
-        html: '<div><h2> Envío completado satisfactoriamente</h2></div><div><h4>Por favor revisa tu bandeja de entrada</h4></div>',
+        html: '<div><h2> Envío completado satisfactoriamente</h2></div><div><h4>Por favor revisa tu bandeja de entrada y sigue las instrucciones para generar tus credenciales de acceso</h4></div>',
         width: '40%',
         confirmButtonColor: '#31A217',
         //confirmButtonText: '<h5>Iniciar Sesion</h5>'
-    }).then(function () {
-        window.location = "Login.aspx"
     })
+    //    .then(function () {
+    //    window.location = "FormAsignarClave.aspx"
+    //})
 }
 function noencontrado() {
 

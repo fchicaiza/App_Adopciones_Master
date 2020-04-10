@@ -205,25 +205,11 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Login")]
-		public ISingleResult<Sp_LoginResult> Sp_Login()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_LoginResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Registro")]
 		public ISingleResult<Sp_RegistroResult> Sp_Registro()
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
 			return ((ISingleResult<Sp_RegistroResult>)(result.ReturnValue));
-		}
-		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_InsertarUsuario")]
-		public int Sp_InsertarUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string clave, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string temporal)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, clave, estado, email, temporal);
-			return ((int)(result.ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarClaveTem")]
@@ -254,18 +240,32 @@ namespace CapaDatos
 			return ((ISingleResult<Sp_BuscarIdEmailResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_EditarUsuario1")]
-		public int Sp_EditarUsuario1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string clave)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, usuario, clave);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarIdUsu")]
 		public ISingleResult<Sp_BuscarIdUsuResult> Sp_BuscarIdUsu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string cltem)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cltem);
 			return ((ISingleResult<Sp_BuscarIdUsuResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Login")]
+		public ISingleResult<Sp_LoginResult> Sp_Login()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_LoginResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_EditarUsuario1")]
+		public int Sp_EditarUsuario1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string clave)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id, usuario, clave);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_InsertarUsuario")]
+		public int Sp_InsertarUsuario([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string clave, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> estado, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string email, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string temporal, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idrol)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, clave, estado, email, temporal, idrol);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -2169,8 +2169,6 @@ namespace CapaDatos
 		
 		private int _id_per;
 		
-		private System.Nullable<int> _id_ro;
-		
 		private System.Nullable<int> _id_usuario;
 		
 		private string _img_per;
@@ -2178,8 +2176,6 @@ namespace CapaDatos
 		private EntitySet<tbl_adoptante> _tbl_adoptante;
 		
 		private EntitySet<tbl_tutor> _tbl_tutor;
-		
-		private EntityRef<tbl_rol> _tbl_rol;
 		
 		private EntityRef<tbl_usuario> _tbl_usuario;
 		
@@ -2205,8 +2201,6 @@ namespace CapaDatos
     partial void Onest_perChanged();
     partial void Onid_perChanging(int value);
     partial void Onid_perChanged();
-    partial void Onid_roChanging(System.Nullable<int> value);
-    partial void Onid_roChanged();
     partial void Onid_usuarioChanging(System.Nullable<int> value);
     partial void Onid_usuarioChanged();
     partial void Onimg_perChanging(string value);
@@ -2217,7 +2211,6 @@ namespace CapaDatos
 		{
 			this._tbl_adoptante = new EntitySet<tbl_adoptante>(new Action<tbl_adoptante>(this.attach_tbl_adoptante), new Action<tbl_adoptante>(this.detach_tbl_adoptante));
 			this._tbl_tutor = new EntitySet<tbl_tutor>(new Action<tbl_tutor>(this.attach_tbl_tutor), new Action<tbl_tutor>(this.detach_tbl_tutor));
-			this._tbl_rol = default(EntityRef<tbl_rol>);
 			this._tbl_usuario = default(EntityRef<tbl_usuario>);
 			OnCreated();
 		}
@@ -2402,30 +2395,6 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_ro", DbType="Int")]
-		public System.Nullable<int> id_ro
-		{
-			get
-			{
-				return this._id_ro;
-			}
-			set
-			{
-				if ((this._id_ro != value))
-				{
-					if (this._tbl_rol.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onid_roChanging(value);
-					this.SendPropertyChanging();
-					this._id_ro = value;
-					this.SendPropertyChanged("id_ro");
-					this.Onid_roChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
 		public System.Nullable<int> id_usuario
 		{
@@ -2493,40 +2462,6 @@ namespace CapaDatos
 			set
 			{
 				this._tbl_tutor.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_rol_tbl_personas", Storage="_tbl_rol", ThisKey="id_ro", OtherKey="id_rol", IsForeignKey=true)]
-		public tbl_rol tbl_rol
-		{
-			get
-			{
-				return this._tbl_rol.Entity;
-			}
-			set
-			{
-				tbl_rol previousValue = this._tbl_rol.Entity;
-				if (((previousValue != value) 
-							|| (this._tbl_rol.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tbl_rol.Entity = null;
-						previousValue.tbl_personas.Remove(this);
-					}
-					this._tbl_rol.Entity = value;
-					if ((value != null))
-					{
-						value.tbl_personas.Add(this);
-						this._id_ro = value.id_rol;
-					}
-					else
-					{
-						this._id_ro = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("tbl_rol");
-				}
 			}
 		}
 		
@@ -2735,7 +2670,7 @@ namespace CapaDatos
 		
 		private int _id_rol;
 		
-		private EntitySet<tbl_personas> _tbl_personas;
+		private EntitySet<tbl_usuario> _tbl_usuario;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -2751,7 +2686,7 @@ namespace CapaDatos
 		
 		public tbl_rol()
 		{
-			this._tbl_personas = new EntitySet<tbl_personas>(new Action<tbl_personas>(this.attach_tbl_personas), new Action<tbl_personas>(this.detach_tbl_personas));
+			this._tbl_usuario = new EntitySet<tbl_usuario>(new Action<tbl_usuario>(this.attach_tbl_usuario), new Action<tbl_usuario>(this.detach_tbl_usuario));
 			OnCreated();
 		}
 		
@@ -2815,16 +2750,16 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_rol_tbl_personas", Storage="_tbl_personas", ThisKey="id_rol", OtherKey="id_ro")]
-		public EntitySet<tbl_personas> tbl_personas
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_rol_tbl_usuario", Storage="_tbl_usuario", ThisKey="id_rol", OtherKey="id_roles")]
+		public EntitySet<tbl_usuario> tbl_usuario
 		{
 			get
 			{
-				return this._tbl_personas;
+				return this._tbl_usuario;
 			}
 			set
 			{
-				this._tbl_personas.Assign(value);
+				this._tbl_usuario.Assign(value);
 			}
 		}
 		
@@ -2848,13 +2783,13 @@ namespace CapaDatos
 			}
 		}
 		
-		private void attach_tbl_personas(tbl_personas entity)
+		private void attach_tbl_usuario(tbl_usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.tbl_rol = this;
 		}
 		
-		private void detach_tbl_personas(tbl_personas entity)
+		private void detach_tbl_usuario(tbl_usuario entity)
 		{
 			this.SendPropertyChanging();
 			entity.tbl_rol = null;
@@ -3058,7 +2993,11 @@ namespace CapaDatos
 		
 		private string _cltm_usu;
 		
+		private System.Nullable<int> _id_roles;
+		
 		private EntitySet<tbl_personas> _tbl_personas;
+		
+		private EntityRef<tbl_rol> _tbl_rol;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -3076,11 +3015,14 @@ namespace CapaDatos
     partial void Onema_usuChanged();
     partial void Oncltm_usuChanging(string value);
     partial void Oncltm_usuChanged();
+    partial void Onid_rolesChanging(System.Nullable<int> value);
+    partial void Onid_rolesChanged();
     #endregion
 		
 		public tbl_usuario()
 		{
 			this._tbl_personas = new EntitySet<tbl_personas>(new Action<tbl_personas>(this.attach_tbl_personas), new Action<tbl_personas>(this.detach_tbl_personas));
+			this._tbl_rol = default(EntityRef<tbl_rol>);
 			OnCreated();
 		}
 		
@@ -3124,7 +3066,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
 		public string pass_usu
 		{
 			get
@@ -3204,6 +3146,30 @@ namespace CapaDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					if (this._tbl_rol.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_rolesChanging(value);
+					this.SendPropertyChanging();
+					this._id_roles = value;
+					this.SendPropertyChanged("id_roles");
+					this.Onid_rolesChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_usuario_tbl_personas", Storage="_tbl_personas", ThisKey="id_usu", OtherKey="id_usuario")]
 		public EntitySet<tbl_personas> tbl_personas
 		{
@@ -3214,6 +3180,40 @@ namespace CapaDatos
 			set
 			{
 				this._tbl_personas.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tbl_rol_tbl_usuario", Storage="_tbl_rol", ThisKey="id_roles", OtherKey="id_rol", IsForeignKey=true)]
+		public tbl_rol tbl_rol
+		{
+			get
+			{
+				return this._tbl_rol.Entity;
+			}
+			set
+			{
+				tbl_rol previousValue = this._tbl_rol.Entity;
+				if (((previousValue != value) 
+							|| (this._tbl_rol.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tbl_rol.Entity = null;
+						previousValue.tbl_usuario.Remove(this);
+					}
+					this._tbl_rol.Entity = value;
+					if ((value != null))
+					{
+						value.tbl_usuario.Add(this);
+						this._id_roles = value.id_rol;
+					}
+					else
+					{
+						this._id_roles = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("tbl_rol");
+				}
 			}
 		}
 		
@@ -3409,230 +3409,6 @@ namespace CapaDatos
 		{
 			this.SendPropertyChanging();
 			entity.tbl_vacunacion = null;
-		}
-	}
-	
-	public partial class Sp_LoginResult
-	{
-		
-		private int _id_per;
-		
-		private string _dni_per;
-		
-		private string _nom_per;
-		
-		private string _ema_per;
-		
-		private string _ape_per;
-		
-		private System.Nullable<int> _id_ro;
-		
-		private string _des_rol;
-		
-		private System.Nullable<int> _id_usuario;
-		
-		private string _user_usu;
-		
-		private string _pass_usu;
-		
-		private string _est_per;
-		
-		private System.Nullable<char> _est_rol;
-		
-		public Sp_LoginResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_per", DbType="Int NOT NULL")]
-		public int id_per
-		{
-			get
-			{
-				return this._id_per;
-			}
-			set
-			{
-				if ((this._id_per != value))
-				{
-					this._id_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dni_per", DbType="VarChar(10)")]
-		public string dni_per
-		{
-			get
-			{
-				return this._dni_per;
-			}
-			set
-			{
-				if ((this._dni_per != value))
-				{
-					this._dni_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nom_per", DbType="VarChar(20)")]
-		public string nom_per
-		{
-			get
-			{
-				return this._nom_per;
-			}
-			set
-			{
-				if ((this._nom_per != value))
-				{
-					this._nom_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_per", DbType="VarChar(100)")]
-		public string ema_per
-		{
-			get
-			{
-				return this._ema_per;
-			}
-			set
-			{
-				if ((this._ema_per != value))
-				{
-					this._ema_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ape_per", DbType="VarChar(20)")]
-		public string ape_per
-		{
-			get
-			{
-				return this._ape_per;
-			}
-			set
-			{
-				if ((this._ape_per != value))
-				{
-					this._ape_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_ro", DbType="Int")]
-		public System.Nullable<int> id_ro
-		{
-			get
-			{
-				return this._id_ro;
-			}
-			set
-			{
-				if ((this._id_ro != value))
-				{
-					this._id_ro = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_des_rol", DbType="VarChar(20)")]
-		public string des_rol
-		{
-			get
-			{
-				return this._des_rol;
-			}
-			set
-			{
-				if ((this._des_rol != value))
-				{
-					this._des_rol = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
-		public System.Nullable<int> id_usuario
-		{
-			get
-			{
-				return this._id_usuario;
-			}
-			set
-			{
-				if ((this._id_usuario != value))
-				{
-					this._id_usuario = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
-		public string user_usu
-		{
-			get
-			{
-				return this._user_usu;
-			}
-			set
-			{
-				if ((this._user_usu != value))
-				{
-					this._user_usu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
-		public string pass_usu
-		{
-			get
-			{
-				return this._pass_usu;
-			}
-			set
-			{
-				if ((this._pass_usu != value))
-				{
-					this._pass_usu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_per", DbType="VarChar(255)")]
-		public string est_per
-		{
-			get
-			{
-				return this._est_per;
-			}
-			set
-			{
-				if ((this._est_per != value))
-				{
-					this._est_per = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_rol", DbType="Char(1)")]
-		public System.Nullable<char> est_rol
-		{
-			get
-			{
-				return this._est_rol;
-			}
-			set
-			{
-				if ((this._est_rol != value))
-				{
-					this._est_rol = value;
-				}
-			}
 		}
 	}
 	
@@ -4273,6 +4049,122 @@ namespace CapaDatos
 				if ((this._cltm_usu != value))
 				{
 					this._cltm_usu = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_LoginResult
+	{
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private string _ema_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private System.Nullable<int> _id_roles;
+		
+		private string _des_rol;
+		
+		public Sp_LoginResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					this._id_roles = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_des_rol", DbType="VarChar(20)")]
+		public string des_rol
+		{
+			get
+			{
+				return this._des_rol;
+			}
+			set
+			{
+				if ((this._des_rol != value))
+				{
+					this._des_rol = value;
 				}
 			}
 		}

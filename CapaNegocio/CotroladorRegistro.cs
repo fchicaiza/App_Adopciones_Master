@@ -29,7 +29,14 @@ namespace CapaNegocio
             usuarios.Credentials = new System.Net.NetworkCredential("fchicaiza.g1990@gmail.com", "1989Y1990g");
             usuarios.Host = "smtp.gmail.com";
             email.Subject = "Clave Temporal";
-            email.Body = "Su clave temporal es :" + " " + clave;
+            email.Body += "Su clave temporal es :" + " " + clave+"\n" ;
+            email.Body += "Pasos : \n";
+            email.Body += "1. Confirme la clave temporal, enviada en este correo  \n";
+            email.Body += "2. Escriba su nombre de usuario \n";
+            email.Body += "3. Escriba su clave definitiva \n";
+            email.Body += "4. Confirme su contraseña definitiva  \n";
+            email.Body += "5. Ingrese al sistema y complete su informaci&oacuten personal \n";
+
             usuarios.Send(email);
         }
         public Sp_BuscarClaveTemResult BuscarClaveTemporal( string clave)
