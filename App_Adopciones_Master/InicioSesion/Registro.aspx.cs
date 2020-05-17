@@ -65,7 +65,7 @@ namespace App_Adopciones_Master.InicioSesion
                 Convert.ToChar("A"),                
                 txt_email.Text,
                 temp,
-                Convert.ToInt32("2")
+                Convert.ToInt32("1002")
                 );
 
 

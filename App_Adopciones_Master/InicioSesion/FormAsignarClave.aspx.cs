@@ -13,6 +13,7 @@ namespace App_Adopciones_Master.InicioSesion
     public partial class FormAsignarClave : System.Web.UI.Page
     {
         CotroladorRegistro reg = new CotroladorRegistro();
+        
        
         DataClasses1DataContext conn = new DataClasses1DataContext();
         
@@ -49,8 +50,24 @@ namespace App_Adopciones_Master.InicioSesion
                               txt_usuario.Text,
                               Encrypt.GetSHA256(txt_neva.Text)
                             );
-                        Response.Write("<script>window.alert('Su contraseña se ha guardado exitosamente')</script>");
-                       
+
+                        string usuario = txt_usuario.Text;
+                        int idu = Convert.ToInt32(reg.InTemp(usuario));
+
+                        conn.Sp_InsertarPersona(
+
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToString(" "),
+                             Convert.ToChar("I"),
+                             Convert.ToInt32(idu),
+                             Convert.ToString(" ")
+                             );
+
 
                         Response.Redirect("~/InicioSesion/Login.aspx?id=" + id);
 

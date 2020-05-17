@@ -47,5 +47,8 @@ namespace CapaNegocio
             var mail = conn.Sp_Login().FirstOrDefault(em => em.ema_usu.Equals(email));
             return mail;
         }
+
+
+
     }
 }

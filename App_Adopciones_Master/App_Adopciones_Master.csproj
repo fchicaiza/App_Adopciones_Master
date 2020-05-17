@@ -313,6 +313,9 @@
     <Content Include="assets\vendor\toastr\toastr.css" />
     <Content Include="assets\vendor\toastr\toastr.js" />
     <Content Include="assets\vendor\toastr\toastr.min.css" />
+    <Content Include="Clientes\FormNuevosClientes.aspx" />
+    <Content Include="Clientes\TableroClientes.aspx" />
+    <Content Include="Colaboradores\FormInfoNuevoColaborador.aspx" />
     <Content Include="InicioSesion\FormAsignarClave.aspx" />
     <Content Include="InicioSesion\Index.html" />
     <Content Include="InicioSesion\Login.aspx" />
@@ -320,6 +323,34 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clientes\ClientesMaster.Master.cs">
+      <DependentUpon>ClientesMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clientes\ClientesMaster.Master.designer.cs">
+      <DependentUpon>ClientesMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\FormNuevosClientes.aspx.cs">
+      <DependentUpon>FormNuevosClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clientes\FormNuevosClientes.aspx.designer.cs">
+      <DependentUpon>FormNuevosClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\TableroClientes.aspx.cs">
+      <DependentUpon>TableroClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clientes\TableroClientes.aspx.designer.cs">
+      <DependentUpon>TableroClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Colaboradores\FormInfoNuevoColaborador.aspx.cs">
+      <DependentUpon>FormInfoNuevoColaborador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Colaboradores\FormInfoNuevoColaborador.aspx.designer.cs">
+      <DependentUpon>FormInfoNuevoColaborador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="InicioSesion\FormAsignarClave.aspx.cs">
       <DependentUpon>FormAsignarClave.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -372,6 +403,7 @@
     <Content Include="assets\vendor\summernote\font\summernote.ttf" />
     <Content Include="assets\vendor\summernote\font\summernote.woff" />
     <Content Include="assets\vendor\summernote\lang\summernote-mn-MN" />
+    <Content Include="Clientes\ClientesMaster.Master" />
     <None Include="packages.config" />
     <Content Include="sass\base\_general.scss" />
     <Content Include="sass\base\_variables.scss" />
@@ -413,6 +445,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Administrador\" />
+    <Folder Include="assets\avatar\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

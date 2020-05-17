@@ -247,13 +247,6 @@ namespace CapaDatos
 			return ((ISingleResult<Sp_BuscarIdUsuResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Login")]
-		public ISingleResult<Sp_LoginResult> Sp_Login()
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
-			return ((ISingleResult<Sp_LoginResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_EditarUsuario1")]
 		public int Sp_EditarUsuario1([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> id, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string usuario, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string clave)
 		{
@@ -266,6 +259,55 @@ namespace CapaDatos
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), usuario, clave, estado, email, temporal, idrol);
 			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarPersona")]
+		public ISingleResult<Sp_BuscarPersonaResult> Sp_BuscarPersona()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_BuscarPersonaResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_BuscarUsuarioId")]
+		public ISingleResult<Sp_BuscarUsuarioIdResult> Sp_BuscarUsuarioId()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_BuscarUsuarioIdResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_TmpbuscarId")]
+		public ISingleResult<Sp_TmpbuscarIdResult> Sp_TmpbuscarId()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_TmpbuscarIdResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_InsertarPersona")]
+		public int Sp_InsertarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(13)")] string dni, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string nom, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string ape, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string tel, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string clp, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string cls, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string num, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> est, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string img)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), dni, nom, ape, tel, clp, cls, num, est, idu, img);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_EditarPersona")]
+		public int Sp_EditarPersona([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(13)")] string dni, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string nombre, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string apellido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string telefono, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string callp, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(20)")] string calls, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string numc, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Char(1)")] System.Nullable<char> est, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> idu, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(200)")] string img)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), dni, nombre, apellido, telefono, callp, calls, numc, est, idu, img);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_CompararUsuPer")]
+		public ISingleResult<Sp_CompararUsuPerResult> Sp_CompararUsuPer()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_CompararUsuPerResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.Sp_Login")]
+		public ISingleResult<Sp_LoginResult> Sp_Login()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<Sp_LoginResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -4054,14 +4096,186 @@ namespace CapaDatos
 		}
 	}
 	
-	public partial class Sp_LoginResult
+	public partial class Sp_BuscarPersonaResult
 	{
+		
+		private int _id_per;
+		
+		private string _dni_per;
+		
+		private string _nom_per;
+		
+		private string _ape_per;
+		
+		private System.Nullable<char> _est_per;
+		
+		private string _img_per;
+		
+		private int _id_usu;
+		
+		private System.Nullable<int> _id_roles;
+		
+		private string _des_rol;
+		
+		public Sp_BuscarPersonaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_per", DbType="Int NOT NULL")]
+		public int id_per
+		{
+			get
+			{
+				return this._id_per;
+			}
+			set
+			{
+				if ((this._id_per != value))
+				{
+					this._id_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dni_per", DbType="VarChar(10)")]
+		public string dni_per
+		{
+			get
+			{
+				return this._dni_per;
+			}
+			set
+			{
+				if ((this._dni_per != value))
+				{
+					this._dni_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nom_per", DbType="VarChar(20)")]
+		public string nom_per
+		{
+			get
+			{
+				return this._nom_per;
+			}
+			set
+			{
+				if ((this._nom_per != value))
+				{
+					this._nom_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ape_per", DbType="VarChar(20)")]
+		public string ape_per
+		{
+			get
+			{
+				return this._ape_per;
+			}
+			set
+			{
+				if ((this._ape_per != value))
+				{
+					this._ape_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_per", DbType="Char(1)")]
+		public System.Nullable<char> est_per
+		{
+			get
+			{
+				return this._est_per;
+			}
+			set
+			{
+				if ((this._est_per != value))
+				{
+					this._est_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_per", DbType="VarChar(200)")]
+		public string img_per
+		{
+			get
+			{
+				return this._img_per;
+			}
+			set
+			{
+				if ((this._img_per != value))
+				{
+					this._img_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					this._id_roles = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_des_rol", DbType="VarChar(20)")]
+		public string des_rol
+		{
+			get
+			{
+				return this._des_rol;
+			}
+			set
+			{
+				if ((this._des_rol != value))
+				{
+					this._des_rol = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_BuscarUsuarioIdResult
+	{
+		
+		private System.Nullable<int> _id_usuario;
+		
+		private System.Nullable<char> _est_per;
 		
 		private string _user_usu;
 		
 		private string _pass_usu;
-		
-		private string _ema_usu;
 		
 		private System.Nullable<char> _est_usu;
 		
@@ -4069,8 +4283,40 @@ namespace CapaDatos
 		
 		private string _des_rol;
 		
-		public Sp_LoginResult()
+		public Sp_BuscarUsuarioIdResult()
 		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
+		public System.Nullable<int> id_usuario
+		{
+			get
+			{
+				return this._id_usuario;
+			}
+			set
+			{
+				if ((this._id_usuario != value))
+				{
+					this._id_usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_per", DbType="Char(1)")]
+		public System.Nullable<char> est_per
+		{
+			get
+			{
+				return this._est_per;
+			}
+			set
+			{
+				if ((this._est_per != value))
+				{
+					this._est_per = value;
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
@@ -4089,7 +4335,7 @@ namespace CapaDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(20)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
 		public string pass_usu
 		{
 			get
@@ -4101,22 +4347,6 @@ namespace CapaDatos
 				if ((this._pass_usu != value))
 				{
 					this._pass_usu = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
-		public string ema_usu
-		{
-			get
-			{
-				return this._ema_usu;
-			}
-			set
-			{
-				if ((this._ema_usu != value))
-				{
-					this._ema_usu = value;
 				}
 			}
 		}
@@ -4165,6 +4395,696 @@ namespace CapaDatos
 				if ((this._des_rol != value))
 				{
 					this._des_rol = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_TmpbuscarIdResult
+	{
+		
+		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
+		
+		private System.Nullable<int> _id_roles;
+		
+		public Sp_TmpbuscarIdResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					this._id_roles = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_CompararUsuPerResult
+	{
+		
+		private int _id_per;
+		
+		private string _dni_per;
+		
+		private string _nom_per;
+		
+		private string _ape_per;
+		
+		private System.Nullable<char> _est_per;
+		
+		private string _img_per;
+		
+		private System.Nullable<int> _id_usuario;
+		
+		private int _id_usu;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _ema_usu;
+		
+		private string _cltm_usu;
+		
+		private System.Nullable<int> _id_roles;
+		
+		private string _des_rol;
+		
+		public Sp_CompararUsuPerResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_per", DbType="Int NOT NULL")]
+		public int id_per
+		{
+			get
+			{
+				return this._id_per;
+			}
+			set
+			{
+				if ((this._id_per != value))
+				{
+					this._id_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dni_per", DbType="VarChar(10)")]
+		public string dni_per
+		{
+			get
+			{
+				return this._dni_per;
+			}
+			set
+			{
+				if ((this._dni_per != value))
+				{
+					this._dni_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nom_per", DbType="VarChar(20)")]
+		public string nom_per
+		{
+			get
+			{
+				return this._nom_per;
+			}
+			set
+			{
+				if ((this._nom_per != value))
+				{
+					this._nom_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ape_per", DbType="VarChar(20)")]
+		public string ape_per
+		{
+			get
+			{
+				return this._ape_per;
+			}
+			set
+			{
+				if ((this._ape_per != value))
+				{
+					this._ape_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_per", DbType="Char(1)")]
+		public System.Nullable<char> est_per
+		{
+			get
+			{
+				return this._est_per;
+			}
+			set
+			{
+				if ((this._est_per != value))
+				{
+					this._est_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_per", DbType="VarChar(200)")]
+		public string img_per
+		{
+			get
+			{
+				return this._img_per;
+			}
+			set
+			{
+				if ((this._img_per != value))
+				{
+					this._img_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
+		public System.Nullable<int> id_usuario
+		{
+			get
+			{
+				return this._id_usuario;
+			}
+			set
+			{
+				if ((this._id_usuario != value))
+				{
+					this._id_usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usu", DbType="Int NOT NULL")]
+		public int id_usu
+		{
+			get
+			{
+				return this._id_usu;
+			}
+			set
+			{
+				if ((this._id_usu != value))
+				{
+					this._id_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					this._id_roles = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_des_rol", DbType="VarChar(20)")]
+		public string des_rol
+		{
+			get
+			{
+				return this._des_rol;
+			}
+			set
+			{
+				if ((this._des_rol != value))
+				{
+					this._des_rol = value;
+				}
+			}
+		}
+	}
+	
+	public partial class Sp_LoginResult
+	{
+		
+		private int _id_per;
+		
+		private string _dni_per;
+		
+		private string _nom_per;
+		
+		private string _ape_per;
+		
+		private System.Nullable<int> _id_usuario;
+		
+		private string _img_per;
+		
+		private System.Nullable<char> _est_per;
+		
+		private string _user_usu;
+		
+		private string _pass_usu;
+		
+		private System.Nullable<char> _est_usu;
+		
+		private string _cltm_usu;
+		
+		private string _ema_usu;
+		
+		private System.Nullable<int> _id_roles;
+		
+		private string _des_rol;
+		
+		private System.Nullable<char> _est_rol;
+		
+		public Sp_LoginResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_per", DbType="Int NOT NULL")]
+		public int id_per
+		{
+			get
+			{
+				return this._id_per;
+			}
+			set
+			{
+				if ((this._id_per != value))
+				{
+					this._id_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dni_per", DbType="VarChar(10)")]
+		public string dni_per
+		{
+			get
+			{
+				return this._dni_per;
+			}
+			set
+			{
+				if ((this._dni_per != value))
+				{
+					this._dni_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nom_per", DbType="VarChar(20)")]
+		public string nom_per
+		{
+			get
+			{
+				return this._nom_per;
+			}
+			set
+			{
+				if ((this._nom_per != value))
+				{
+					this._nom_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ape_per", DbType="VarChar(20)")]
+		public string ape_per
+		{
+			get
+			{
+				return this._ape_per;
+			}
+			set
+			{
+				if ((this._ape_per != value))
+				{
+					this._ape_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_usuario", DbType="Int")]
+		public System.Nullable<int> id_usuario
+		{
+			get
+			{
+				return this._id_usuario;
+			}
+			set
+			{
+				if ((this._id_usuario != value))
+				{
+					this._id_usuario = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_img_per", DbType="VarChar(200)")]
+		public string img_per
+		{
+			get
+			{
+				return this._img_per;
+			}
+			set
+			{
+				if ((this._img_per != value))
+				{
+					this._img_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_per", DbType="Char(1)")]
+		public System.Nullable<char> est_per
+		{
+			get
+			{
+				return this._est_per;
+			}
+			set
+			{
+				if ((this._est_per != value))
+				{
+					this._est_per = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_usu", DbType="VarChar(20)")]
+		public string user_usu
+		{
+			get
+			{
+				return this._user_usu;
+			}
+			set
+			{
+				if ((this._user_usu != value))
+				{
+					this._user_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pass_usu", DbType="VarChar(200)")]
+		public string pass_usu
+		{
+			get
+			{
+				return this._pass_usu;
+			}
+			set
+			{
+				if ((this._pass_usu != value))
+				{
+					this._pass_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_usu", DbType="Char(1)")]
+		public System.Nullable<char> est_usu
+		{
+			get
+			{
+				return this._est_usu;
+			}
+			set
+			{
+				if ((this._est_usu != value))
+				{
+					this._est_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_cltm_usu", DbType="VarChar(10)")]
+		public string cltm_usu
+		{
+			get
+			{
+				return this._cltm_usu;
+			}
+			set
+			{
+				if ((this._cltm_usu != value))
+				{
+					this._cltm_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ema_usu", DbType="VarChar(200)")]
+		public string ema_usu
+		{
+			get
+			{
+				return this._ema_usu;
+			}
+			set
+			{
+				if ((this._ema_usu != value))
+				{
+					this._ema_usu = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_roles", DbType="Int")]
+		public System.Nullable<int> id_roles
+		{
+			get
+			{
+				return this._id_roles;
+			}
+			set
+			{
+				if ((this._id_roles != value))
+				{
+					this._id_roles = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_des_rol", DbType="VarChar(20)")]
+		public string des_rol
+		{
+			get
+			{
+				return this._des_rol;
+			}
+			set
+			{
+				if ((this._des_rol != value))
+				{
+					this._des_rol = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_est_rol", DbType="Char(1)")]
+		public System.Nullable<char> est_rol
+		{
+			get
+			{
+				return this._est_rol;
+			}
+			set
+			{
+				if ((this._est_rol != value))
+				{
+					this._est_rol = value;
 				}
 			}
 		}

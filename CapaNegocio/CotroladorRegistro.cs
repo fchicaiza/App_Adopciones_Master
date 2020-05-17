@@ -35,7 +35,7 @@ namespace CapaNegocio
             email.Body += "2. Escriba su nombre de usuario \n";
             email.Body += "3. Escriba su clave definitiva \n";
             email.Body += "4. Confirme su contraseña definitiva  \n";
-            email.Body += "5. Ingrese al sistema y complete su informaci&oacuten personal \n";
+            email.Body += "5. Ingrese al sistema y complete su informacion personal \n";
 
             usuarios.Send(email);
         }
@@ -72,6 +72,9 @@ namespace CapaNegocio
         {
             return conn.Sp_BuscarIdEmail().First(li=>li.ema_usu == mail).id_usu;
         }
-
+        public int? InTemp(string usuario)
+        {
+            return conn.Sp_TmpbuscarId().First(li => li.user_usu == usuario).id_usu;
+        }
     }
 }

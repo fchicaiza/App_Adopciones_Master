@@ -211,16 +211,6 @@
       <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.Sp_Login" Method="Sp_Login">
-    <ElementType Name="Sp_LoginResult">
-      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="pass_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
-      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.Sp_EditarUsuario1" Method="Sp_EditarUsuario1">
     <Parameter Name="id" Type="System.Int32" DbType="Int" />
     <Parameter Name="usuario" Type="System.String" DbType="VarChar(20)" />
@@ -235,5 +225,104 @@
     <Parameter Name="temporal" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="idrol" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_BuscarPersona" Method="Sp_BuscarPersona">
+    <ElementType Name="Sp_BuscarPersonaResult">
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="img_per" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_BuscarUsuarioId" Method="Sp_BuscarUsuarioId">
+    <ElementType Name="Sp_BuscarUsuarioIdResult">
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="est_per" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_TmpbuscarId" Method="Sp_TmpbuscarId">
+    <ElementType Name="Sp_TmpbuscarIdResult">
+      <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_InsertarPersona" Method="Sp_InsertarPersona">
+    <Parameter Name="dni" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="nom" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="ape" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="tel" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="clp" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="cls" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="num" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="est" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="idu" Type="System.Int32" DbType="Int" />
+    <Parameter Name="img" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_EditarPersona" Method="Sp_EditarPersona">
+    <Parameter Name="dni" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="nombre" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="apellido" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="telefono" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="callp" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="calls" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="numc" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="est" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="idu" Type="System.Int32" DbType="Int" />
+    <Parameter Name="img" Type="System.String" DbType="VarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Sp_CompararUsuPer" Method="Sp_CompararUsuPer">
+    <ElementType Name="Sp_CompararUsuPerResult">
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="img_per" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="id_usu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Sp_Login" Method="Sp_Login">
+    <ElementType Name="Sp_LoginResult">
+      <Column Name="id_per" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dni_per" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nom_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ape_per" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="id_usuario" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="img_per" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_per" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="user_usu" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="pass_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="est_usu" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="cltm_usu" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ema_usu" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="id_roles" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="des_rol" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="est_rol" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </ElementType>
   </Function>
 </Database>

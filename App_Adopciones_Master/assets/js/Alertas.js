@@ -30,6 +30,30 @@ function timer() {
 
 }
 
+// completar formulario de usuario
+function completar() {
+    Swal.fire({
+        icon: 'sucess',
+        html: '<div><h2> Acceso Correcto</h2></div><div><h4>Por favor completa tu perfil para iniciar</h4></div>',
+        width: '40%',
+        confirmButtonColor: '#31A217',
+        //confirmButtonText: '<h5>Iniciar Sesion</h5>'
+    })
+    //    .then(function () {
+    //    window.location = "FormAsignarClave.aspx"
+    //})
+}
+//Contraseña asignada
+
+function claveasignada() {
+
+    Swal.fire(
+        '<h3>Usuario y contraseña generados correctamente!</h3>',
+        '<h4>Ahora puedes ingresar al sistema</h4>',
+        'success'
+
+    )
+}
 
 function inactivo() {
     Swal.fire({
